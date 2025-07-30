@@ -16,7 +16,7 @@ reddit = praw.Reddit(
 )
 
 # Specify the subreddit target
-subreddit_name = 'FeMRADebates'
+subreddit_name = 'AskFeminists'
 subreddit = reddit.subreddit(subreddit_name)
 
 # Scrape posts from the subreddit
@@ -74,8 +74,8 @@ for submission in subreddit.top(limit=NUM_POSTS, time_filter='all'):
 df_submissions = pd.DataFrame(submissions_data)
 df_comments = pd.DataFrame(all_comments_data)
 
-OUTPUT_SUBMISSIONS_FILE = 'femradebates_submissions.json'
-OUTPUT_COMMENTS_FILE = 'femradebates_comments.json'
+OUTPUT_SUBMISSIONS_FILE = f'scrapes/{subreddit_name.lower()}_submissions.json'
+OUTPUT_COMMENTS_FILE = f'scrapes/{subreddit_name.lower()}_comments.json'
 
 # Save DataFrame to JSON
 df_submissions.to_json(OUTPUT_SUBMISSIONS_FILE, orient='records', lines=True)

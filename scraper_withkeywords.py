@@ -16,7 +16,7 @@ reddit = praw.Reddit(
 )
 
 # Specify the subreddit target
-subreddit_name = 'Discussion'
+subreddit_name = 'Discussion'  # Change this to the subreddit we want to search in
 subreddit = reddit.subreddit(subreddit_name)
 keyword = 'misogyny'  # Change this to the keyword we want to search for
 
@@ -75,8 +75,8 @@ for submission in subreddit.top(limit=NUM_POSTS, time_filter='all'):
 df_submissions = pd.DataFrame(submissions_data)
 df_comments = pd.DataFrame(all_comments_data)
 
-OUTPUT_SUBMISSIONS_FILE = f'scrapes/discussion-{keyword}_submissions.json'
-OUTPUT_COMMENTS_FILE = f'scrapes/discussion-{keyword}_comments.json'
+OUTPUT_SUBMISSIONS_FILE = f'scrapes/{subreddit_name.lower()}-{keyword}_submissions.json'
+OUTPUT_COMMENTS_FILE = f'scrapes/{subreddit_name.lower()}-{keyword}_comments.json'
 
 # Save DataFrame to JSON
 df_submissions.to_json(OUTPUT_SUBMISSIONS_FILE, orient='records', lines=True)
