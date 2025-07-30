@@ -16,7 +16,7 @@ reddit = praw.Reddit(
 )
 
 # Specify the subreddit target
-subreddit_name = 'AskFeminists'
+subreddit_name = 'wgtow'  # Change this to the subreddit we want to search in
 subreddit = reddit.subreddit(subreddit_name)
 
 # Scrape posts from the subreddit
