@@ -1,0 +1,4 @@
+accelerate
+praw
+torch
+transformers
