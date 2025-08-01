@@ -16,7 +16,7 @@ reddit = praw.Reddit(
 )
 
 # Specify the subreddit target
-subreddit_name = 'FemaleDatingStrategy'  # Change this to the subreddit we want to search in
+subreddit_name = 'Feminism'  # Change this to the subreddit we want to search in
 subreddit = reddit.subreddit(subreddit_name)
 
 # Scrape posts from the subreddit
@@ -64,7 +64,7 @@ for submission in subreddit.top(limit=NUM_POSTS, time_filter='all'):
                 'comment_id': comment.id,
                 'parent_id': comment.parent_id,
                 'score': comment.score,
-                'submission_id': comment.id
+                'submission_id': submission.id
             }
             all_comments_data.append(comment_info)
             comments_processed += 1
