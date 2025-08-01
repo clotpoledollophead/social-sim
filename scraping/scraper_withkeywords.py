@@ -65,7 +65,7 @@ for submission in subreddit.top(limit=NUM_POSTS, time_filter='all'):
                     'comment_id': comment.id,
                     'parent_id': comment.parent_id,
                     'score': comment.score,
-                    'upvote_ratio':comment.upvote_ratio,
+                    'upvote_ratio': comment.upvote_ratio,
                     'submission_id': submission.id
                 }
                 all_comments_data.append(comment_info)
