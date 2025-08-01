@@ -47,7 +47,9 @@ for submission in subreddit.top(limit=NUM_POSTS, time_filter='all'):
             'score': submission.score, # upvote - downvote
             'selftext': submission.selftext,
             'title': submission.title,
-            'url': submission.url
+            'url': submission.url,
+            'upvote_ratio':submission.upvote_ratio,
+            'over_18':submission.over_18
         })
         # Scrape top 10 comments for each submission
         submission.comments.replace_more(limit=0)
@@ -63,7 +65,8 @@ for submission in subreddit.top(limit=NUM_POSTS, time_filter='all'):
                     'comment_id': comment.id,
                     'parent_id': comment.parent_id,
                     'score': comment.score,
-                    'submission_id': submission.id
+                    'submission_id': comment.id,
+                    'upvote_ratio':comment.upvote_ratio
                 }
                 all_comments_data.append(comment_info)
                 comments_processed += 1
