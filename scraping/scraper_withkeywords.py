@@ -16,9 +16,9 @@ reddit = praw.Reddit(
 )
 
 # Specify the subreddit target
-subreddit_name = 'Discussion'  # Change this to the subreddit we want to search in
+subreddit_name = 'psychology'  # Change this to the subreddit we want to search in
 subreddit = reddit.subreddit(subreddit_name)
-keyword = 'misogyny'  # Change this to the keyword we want to search for
+keyword = 'feminist'  # Change this to the keyword we want to search for
 
 # Scrape posts from the subreddit
 NUM_POSTS = 2000
@@ -65,7 +65,6 @@ for submission in subreddit.top(limit=NUM_POSTS, time_filter='all'):
                     'comment_id': comment.id,
                     'parent_id': comment.parent_id,
                     'score': comment.score,
-                    'upvote_ratio': comment.upvote_ratio,
                     'submission_id': submission.id
                 }
                 all_comments_data.append(comment_info)
