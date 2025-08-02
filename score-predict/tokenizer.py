@@ -47,15 +47,19 @@ for comment in all_comments_data:
 # Process submissions and combine with comments
 processed_data = []
 for submission in all_submissions_data:
-    submission_id = submission['id']
-    submission_comments = comments_by_submission.get(submission_id, [])
+    # Extract subreddit from permalink
+    permalink = submission.get('permalink', '')
+    try:
+        subreddit = permalink.split('/')[2]
+    except IndexError:
+        subreddit = 'unknown'
 
     # Combine all features into a single dictionary
     combined_features = {
-        'submission_id': submission_id,
+        'submission_id': submission.get('id', ''),
         'title': submission.get('title', ''),
         'selftext': submission.get('selftext', ''),
-        'subreddit': 'r/psychology',  # Assumed from file name, but could be extracted if varied
+        'subreddit': subreddit,
         'upvote_ratio': submission.get('upvote_ratio', 0.0),
         'over_18': 1 if submission.get('over_18', False) else 0,
         'target_score': submission.get('score', 0)
