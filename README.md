@@ -11,8 +11,7 @@ This project combines large language models and lightweight predictive models to
 2. Analyze/simulate toxicty, bas, or alignment in gender-related discourse
 &rarr; Serve as a core module in the social simulation
 
-| Task                        | Base Model          | Why                                  |
-| --------------------------- | ------------------------------- | ------------------------------------ |
-| Score prediction            | RoBERTa / DistilBERT            | Lightweight, text-focused            |
-| Toxicity / bias detection   | RoBERTa / BERT + Detox datasets | Well-supported in toxic discourse    |
-| Simulation-compatible model | LLaMA / Mistral (optional)      | Smaller LLMs with custom fine-tuning |
+| Task                        | Base Model          |
+| --------------------------- | ------------------------------- | 
+| Score prediction            | RoBERTa / DistilBERT            |
+| Toxicity / bias detection   | Perspective API / Amazon Comprehend |
