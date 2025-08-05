@@ -18,7 +18,7 @@ reddit = praw.Reddit(
 # Specify the subreddit target
 subreddit_name = 'Discussion'  # Change this to the subreddit we want to search in
 subreddit = reddit.subreddit(subreddit_name)
-keyword = 'misogyny'  # Change this to the keyword we want to search for
+keyword = 'feminism'  # Change this to the keyword we want to search for
 
 # Scrape posts from the subreddit
 NUM_POSTS = 2000

@@ -1,4 +1,6 @@
 accelerate
 praw
+scikit-learn
 torch
 transformers
+tqdm
