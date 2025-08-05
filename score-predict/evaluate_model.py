@@ -9,6 +9,7 @@ import os
 import numpy as np
 from tqdm import tqdm
 from sklearn.metrics import mean_squared_error, mean_absolute_error, r2_score
+from sklearn.preprocessing import StandardScaler
 import pandas as pd
 from datetime import datetime
 
@@ -43,7 +44,7 @@ def load_json_lines(file_path):
                     print(f"Error decoding JSON from file {file_path}: {e}")
     return data
 
-def load_model_and_scaler(model_path="roberta_score_regressor.pt", scaler_path="score_scaler.save"):
+def load_model_and_scaler(model_path="trained_models/roberta_score_regressor_withoutsub-3epochs.pt", scaler_path="trained_models/score_scaler_withoutsub-3epochs.save"):
     """Load the trained model and scaler."""
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     
@@ -217,25 +218,25 @@ def evaluate_from_json_files(scrapes_dir="../scraping/scrapes/", batch_size=32, 
     print(f"Mean actual score: {np.mean(actual_scores):.2f}")
     print(f"Mean predicted score: {np.mean(predicted_scores):.2f}")
     
-    # Show some examples
-    print(f"\n🎯 SAMPLE PREDICTIONS:")
-    print(f"=" * 80)
-    sample_results = results_df.sample(min(10, len(results_df)))
-    for _, row in sample_results.iterrows():
-        print(f"'{row['title'][:50]}...'")
-        print(f"  Actual: {row['actual_score']:.0f} | Predicted: {row['predicted_score']:.1f} | Error: {row['error']:.1f}")
-        print()
+    # # Show some examples
+    # print(f"\n🎯 SAMPLE PREDICTIONS:")
+    # print(f"=" * 80)
+    # sample_results = results_df.sample(min(10, len(results_df)))
+    # for _, row in sample_results.iterrows():
+    #     print(f"'{row['title'][:50]}...'")
+    #     print(f"  Actual: {row['actual_score']:.0f} | Predicted: {row['predicted_score']:.1f} | Error: {row['error']:.1f}")
+    #     print()
     
-    # Show best and worst predictions
-    print(f"🏆 BEST PREDICTIONS (lowest error):")
-    best_predictions = results_df.nsmallest(5, 'error')
-    for _, row in best_predictions.iterrows():
-        print(f"  Error {row['error']:.1f}: '{row['title'][:60]}...' (actual: {row['actual_score']}, pred: {row['predicted_score']:.1f})")
+    # # Show best and worst predictions
+    # print(f"🏆 BEST PREDICTIONS (lowest error):")
+    # best_predictions = results_df.nsmallest(5, 'error')
+    # for _, row in best_predictions.iterrows():
+    #     print(f"  Error {row['error']:.1f}: '{row['title'][:60]}...' (actual: {row['actual_score']}, pred: {row['predicted_score']:.1f})")
     
-    print(f"\n💥 WORST PREDICTIONS (highest error):")
-    worst_predictions = results_df.nlargest(5, 'error')
-    for _, row in worst_predictions.iterrows():
-        print(f"  Error {row['error']:.1f}: '{row['title'][:60]}...' (actual: {row['actual_score']}, pred: {row['predicted_score']:.1f})")
+    # print(f"\n💥 WORST PREDICTIONS (highest error):")
+    # worst_predictions = results_df.nlargest(5, 'error')
+    # for _, row in worst_predictions.iterrows():
+    #     print(f"  Error {row['error']:.1f}: '{row['title'][:60]}...' (actual: {row['actual_score']}, pred: {row['predicted_score']:.1f})")
     
     # Subreddit analysis
     print(f"\n📱 TOP SUBREDDITS BY PREDICTION ERROR:")

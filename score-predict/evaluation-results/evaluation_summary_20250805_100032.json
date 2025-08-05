@@ -1,0 +1,52 @@
+{
+  "timestamp": "20250805_100032",
+  "total_posts": 8356,
+  "metrics": {
+    "MSE": 30153207.95329583,
+    "RMSE": 5491.193672899894,
+    "MAE": 2426.45926280517,
+    "R2": 0.6705631737444419
+  },
+  "files_processed": {
+    "submission_files": [
+      "feminism_submissions.json",
+      "twoxchromosomes_submissions.json",
+      "discussion-feminism_submissions.json",
+      "redpillwomen_submissions.json",
+      "discussion-patriarchy_submissions.json",
+      "askfeminists_submissions.json",
+      "femradebates_submissions.json",
+      "discussion-sexism_submissions.json",
+      "discussion-women's rights_submissions.json",
+      "discussion-sexist_submissions.json",
+      "discussion-feminist_submissions.json",
+      "femaledatingstrategy_submissions.json",
+      "discussion-women_submissions.json",
+      "psychology-feminist_submissions.json",
+      "discussion-misogyny_submissions.json",
+      "wgtow_submissions.json",
+      "antifeminist_submissions.json",
+      "mensrights_submissions.json"
+    ],
+    "comment_files": [
+      "antifeminist_comments.json",
+      "discussion-patriarchy_comments.json",
+      "discussion-feminist_comments.json",
+      "discussion-sexist_comments.json",
+      "psychology-feminist_comments.json",
+      "discussion-feminism_comments.json",
+      "feminism_comments.json",
+      "discussion-misogyny_comments.json",
+      "redpillwomen_comments.json",
+      "twoxchromosomes_comments.json",
+      "wgtow_comments.json",
+      "discussion-women_comments.json",
+      "femradebates_comments.json",
+      "askfeminists_comments.json",
+      "mensrights_comments.json",
+      "femaledatingstrategy_comments.json",
+      "discussion-women's rights_comments.json",
+      "discussion-sexism_comments.json"
+    ]
+  }
+}
