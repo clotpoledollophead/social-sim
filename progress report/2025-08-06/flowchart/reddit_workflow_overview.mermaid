@@ -1,0 +1,21 @@
+flowchart LR
+    subgraph Phase1["Post Processing"]
+        P1["Post Input & Score Prediction"]
+    end
+    
+    subgraph Phase2["Comment Analysis"]
+        P2["User Comment History Analysis"]
+    end
+    
+    subgraph Phase3["AI Generation"]
+        P3["Persona & Comment Generation"]
+    end
+    
+    Start([Input: Reddit Post]) --> P1
+    P1 --> P2
+    P2 --> P3
+    P3 --> End([Output: Generated Comments])
+    
+    style Phase1 fill:#DDF,stroke:#336,stroke-width:2px
+    style Phase2 fill:#FFD,stroke:#AA6,stroke-width:2px
+    style Phase3 fill:#DEF,stroke:#36A,stroke-width:2px

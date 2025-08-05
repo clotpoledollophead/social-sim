@@ -1,0 +1,28 @@
+flowchart TB
+    subgraph A["Post Input"]
+        A1["Generate or Input Reddit Post (with subreddit)"]
+        A2["Predict Score (Upvote-Downvote) using RoBERTa"]
+    end
+    
+    subgraph B["Post Selection"]
+        B1["Extract Keywords from Provided Post"]
+        B2["Scrape up to 10 posts from subreddit containing keyword(s)"]
+    end
+    
+    subgraph C["Comment Extraction"]
+        C1["For each of up to 10 posts:"]
+        C2["Extract up to top 10 comments per post"]
+    end
+    
+    Output1(["Output: Posts, Comments, Keywords, Predicted Score"])
+    
+    A1 --> A2
+    A2 --> B1
+    B1 --> B2
+    B2 --> C1
+    C1 --> C2
+    C2 --> Output1
+    
+    style A fill:#DDF,stroke:#336,stroke-width:2px
+    style B fill:#DFD,stroke:#363,stroke-width:2px
+    style C fill:#FFE,stroke:#BB7,stroke-width:2px

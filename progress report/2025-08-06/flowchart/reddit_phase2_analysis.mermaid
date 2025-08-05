@@ -1,0 +1,40 @@
+flowchart TB
+    subgraph Input["Phase Input"]
+        I1["Extracted Comments from Posts"]
+        I2["Keywords"]
+        I3["Subreddit Context"]
+    end
+    
+    subgraph C["History Analysis"]
+        C3["For each comment, log up to 10 user comments in this order:"]
+        C4["(1) The original extracted comment"]
+        C41{"(2) Other comments by user in this subreddit on similar posts by keyword?"}
+        C42["If yes, add by similarity until 10, else go to (3)"]
+        C43{"(3) Similar comments by user in other subreddits on similar posts?"}
+        C44["If yes, add by similarity until 10, else go to (4)"]
+        C45["(4) If <10 collected, stop here"]
+    end
+    
+    subgraph D["Final Processing"]
+        D1["Calculate median number of comments for the 10 posts (cap at 100)"]
+    end
+    
+    Output2(["Output: Enriched Comment Dataset & Median Count"])
+    
+    I1 --> C3
+    I2 --> C3
+    I3 --> C3
+    C3 --> C4
+    C4 --> C41
+    C41 -- Yes --> C42
+    C41 -- No --> C43
+    C42 --> C41
+    C43 -- Yes --> C44
+    C43 -- No --> C45
+    C44 --> C43
+    C45 --> D1
+    D1 --> Output2
+    
+    style C fill:#FFD,stroke:#AA6,stroke-width:2px
+    style D fill:#EDD,stroke:#C88,stroke-width:2px
+    style Input fill:#EEE,stroke:#999,stroke-width:2px

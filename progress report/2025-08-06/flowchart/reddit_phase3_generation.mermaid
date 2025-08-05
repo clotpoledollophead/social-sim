@@ -1,0 +1,34 @@
+flowchart TB
+    subgraph Input["Phase Input"]
+        I1["Enriched Comment Dataset"]
+        I2["Median Comment Count (cap at 100)"]
+        I3["Original Reddit Post (title & body)"]
+        I4["Subreddit"]
+        I5["Predicted Score"]
+    end
+    
+    subgraph D["Persona Generation"]
+        D2["Feed collected comments to LLM to generate personas (count = median, max 100)"]
+    end
+    
+    subgraph E["Comment Generation"]
+        E1["Feed LLM with:"]
+        E2["- The personas<br/>- The generated Reddit post (title & body)<br/>- The subreddit<br/>- The predicted score"]
+        E3["For each persona, generate one comment"]
+    end
+    
+    F1(["Final Output: Generated Comments"])
+    
+    I1 --> D2
+    I2 --> D2
+    D2 --> E1
+    I3 --> E1
+    I4 --> E1
+    I5 --> E1
+    E1 --> E2
+    E2 --> E3
+    E3 --> F1
+    
+    style D fill:#FDD,stroke:#C66,stroke-width:2px
+    style E fill:#DEF,stroke:#36A,stroke-width:2px
+    style Input fill:#EEE,stroke:#999,stroke-width:2px
