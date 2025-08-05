@@ -9,7 +9,6 @@ import os
 import numpy as np
 from tqdm import tqdm
 from sklearn.metrics import mean_squared_error, mean_absolute_error, r2_score
-from sklearn.preprocessing import StandardScaler
 import pandas as pd
 from datetime import datetime
 

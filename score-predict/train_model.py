@@ -11,15 +11,16 @@ print("Preparing data... \n ૮₍ ´ ꒳ `₎ა \n")
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 # Load data
-tokenizer, tokenized, upvote_ratios, over_18_flags, normalized_scores, score_scaler = prepare_data()
+tokenizer, tokenized, upvote_ratios, over_18_flags, subreddits, normalized_scores, score_scaler = prepare_data()
 
 # Combine features
 input_ids = tokenized['input_ids']
 attention_mask = tokenized['attention_mask']
 numerical_features = torch.cat([upvote_ratios, over_18_flags], dim=1)
+categorical_features = subreddits.unsqueeze(1)  # Ensure correct shape for concatenation
 
 # Dataset & Split
-dataset = TensorDataset(input_ids, attention_mask, numerical_features, normalized_scores)
+dataset = TensorDataset(input_ids, attention_mask, numerical_features, categorical_features, normalized_scores)
 train_size = int(0.8 * len(dataset))
 val_size = int(0.1 * len(dataset))
 test_size = len(dataset) - train_size - val_size
