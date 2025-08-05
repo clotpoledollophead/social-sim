@@ -80,6 +80,7 @@ def prepare_data():
     # Prepare numerical and categorical inputs
     upvote_ratios = torch.tensor([item['upvote_ratio'] for item in processed_data], dtype=torch.float).unsqueeze(1)
     over_18_flags = torch.tensor([item['over_18'] for item in processed_data], dtype=torch.float).unsqueeze(1)
+    subreddits = torch.tensor([hash(item['subreddit']) % 1000 for item in processed_data], dtype=torch.long).unsqueeze(1)
 
     # Prepare and normalize target scores
     target_scores = [item['target_score'] for item in processed_data]
@@ -87,7 +88,7 @@ def prepare_data():
     normalized_scores = score_scaler.fit_transform([[score] for score in target_scores])
     normalized_scores = torch.tensor(normalized_scores, dtype=torch.float).squeeze()
 
-    return tokenizer, tokens, upvote_ratios, over_18_flags, normalized_scores, score_scaler
+    return tokenizer, tokens, upvote_ratios, over_18_flags, subreddits, normalized_scores, score_scaler
 
 # For backward compatibility - run the original code when script is executed directly
 if __name__ == "__main__":
@@ -152,6 +153,7 @@ if __name__ == "__main__":
     # Prepare numerical and categorical inputs
     upvote_ratios = torch.tensor([item['upvote_ratio'] for item in processed_data], dtype=torch.float)
     over_18_flags = torch.tensor([item['over_18'] for item in processed_data], dtype=torch.float)
+    subreddits = torch.tensor([hash(item['subreddit']) % 1000 for item in processed_data], dtype=torch.long)
 
     # Prepare target scores
     target_scores = torch.tensor([item['target_score'] for item in processed_data], dtype=torch.float)
