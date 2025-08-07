@@ -1,4 +1,5 @@
 accelerate
+peft
 praw
 scikit-learn
 torch
