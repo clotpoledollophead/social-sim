@@ -127,10 +127,10 @@
         <mxCell id="MJtFDDiAwrRW_KD7ph5Q-40" value="Add most similar, unlogged comment" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="220" y="830" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="MJtFDDiAwrRW_KD7ph5Q-41" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.718;exitY=0.779;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="MJtFDDiAwrRW_KD7ph5Q-39" target="MJtFDDiAwrRW_KD7ph5Q-40">
+        <mxCell id="MJtFDDiAwrRW_KD7ph5Q-41" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.718;exitY=0.779;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="MJtFDDiAwrRW_KD7ph5Q-39">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="400" y="780" as="sourcePoint" />
-            <mxPoint x="450" y="730" as="targetPoint" />
+            <mxPoint x="278" y="830" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="MJtFDDiAwrRW_KD7ph5Q-42" value="Yes" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="MJtFDDiAwrRW_KD7ph5Q-41">
